@@ -18,7 +18,7 @@ def add_car():
 		
         	
 		if _car_id and _car_liscence_number and _manufacturer and _model and _base_price and _pph and _security_deposit and request.method == 'POST':			
-			sqlQuery = "INSERT INTO car(car_id,car_liscence_number, manufacturer, model,base_price,pph,security_deposit) VALUES(%s, %s, %s,%s,%s,%s)"
+			sqlQuery = "INSERT INTO car(car_id,car_liscence_number, manufacturer, model,base_price,pph,security_deposit) VALUES(%s, %s, %s,%s,%s,%s,%s)"
 			bindData = (_car_id,_car_liscence_number, _manufacturer, _model,_base_price,_pph,_security_deposit)
 			conn = mysql.connect()
 			cursor = conn.cursor()
@@ -63,7 +63,7 @@ def update_car():
                     _security_deposit=_json['security_deposit']                        
                     if _car_id and _car_liscence_number and _manufacturer and _model and _base_price and _pph and _security_deposit and request.method == 'PUT':			
                         sqlQuery = "UPDATE car SET car_liscence_number=%s,manufacturer=%s, model=%s,base_price=%s,pph=%s,security_deposit=%s WHERE car_id=%s"
-                        bindData = (_car_id,_car_liscence_number,_manufacturer,_model,_base_price,_pph,_security_deposit)
+                        bindData = (_car_liscence_number,_manufacturer,_model,_base_price,_pph,_security_deposit,_car_id)
                         conn = mysql.connect()
                         cursor = conn.cursor()
                         cursor.execute(sqlQuery, bindData)
