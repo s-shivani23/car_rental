@@ -59,13 +59,13 @@ def update_user():
                         
                         
                     if _user_id and _name and _phone_number and request.method == 'PUT':			
-                        sqlQuery = "UPDATE user SET name=%s, phone_number=%s WHERE user_id=%s"
-                        bindData = (_user_id,_name,_phone_number)
+                        sqlQuery = ("UPDATE user SET name=%s, phone_number=%s WHERE user_id=%s")
+                        bindData = (_name,_phone_number,_user_id)
                         conn = mysql.connect()
                         cursor = conn.cursor()
                         cursor.execute(sqlQuery, bindData)
                         conn.commit()
-                        respone = jsonify('Employee updated successfully!')
+                        respone = jsonify('User updated successfully!')
                         respone.status_code = 200
                         return respone
                     else:
@@ -84,7 +84,7 @@ def delete_user(user_id):
 		cursor = conn.cursor()
 		cursor.execute("DELETE FROM user WHERE user_id =%s", (user_id))
 		conn.commit()
-		respone = jsonify('Employee deleted successfully!')
+		respone = jsonify('User deleted successfully!')
 		respone.status_code = 200
 		return respone
 	except Exception as e:
